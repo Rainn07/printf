@@ -8,6 +8,9 @@ int _printf(const char *format, ...)
 {
 	int ncount = 0;
 	va_list args;
+	format_specifier specifiers[] = {
+		{'c', c_format},
+		{'s', s_format},
 
 	va_start(args, format);
 
@@ -21,42 +24,14 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-
-			switch (*format)
+			for (int i = 0; specifiers[i].type != '\0'; i++)
 			{
-				case 'c':
-
-					_putcha(va_arg(args, int));
+				if (*format == specifiers[i].type)
+				{
+					specifiers[i].f(args);
 					ncount++;
 					break;
-				case 's':
-					{
-					char *str = va_arg(args, char*);
-
-					if (str)
-					{
-					while (*str)
-					{
-						_putcha(*str);
-						str++;
-						ncount++;
-					}
-					}
-					}
-					break;
-				case '%':
-					_putcha('%');
-					ncount++;
-					break;
-				default:
-					{
-					if (*format != '%')
-					{
-						_putcha(*format);
-						ncount++;
-					}
-					break;
-					}
+				}
 			}
 		}
 		format++;
