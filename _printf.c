@@ -8,6 +8,9 @@ int _printf(const char *format, ...)
 {
 	int ncount = 0;
 	va_list args;
+	format_specifier specifiers[] = {
+		{'c', c_format},
+		{'s', s_format},
 
 	va_start(args, format);
 
@@ -21,28 +24,15 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '%')
-			{
-				_putchar('%');
-				ncount++;
-				format++;
-			}
-			else if (*format == 'c')
-			{
-				_putchar(va_arg(args, int));
-				ncount++;
-				format++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char*);
 
-				if (str)
-					while (*str)
-						_putchar(*str++);
-						ncount++;
-
-					format++;
+			for (int i = 0; specifiers[i].type != '\0'; i++)
+			{
+				if (*format == specifiers[i].type)
+				{
+					specifiers[i].f(args);
+					ncount++;
+					break;
+				}
 			}
 			else
 				_putchar('%');
