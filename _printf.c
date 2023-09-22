@@ -15,53 +15,40 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			_putcha(*format);
+			_putchar(*format);
 			ncount++;
 		}
 		else
 		{
 			format++;
-
-			switch (*format)
+			if (*format == '%')
 			{
-				case 'c':
-
-					_putcha(va_arg(args, int));
-					ncount++;
-					break;
-				case 's':
-					{
-					char *str = va_arg(args, char*);
-
-					if (str)
-					{
-					while (*str)
-					{
-						_putcha(*str);
-						str++;
-						ncount++;
-					}
-					}
-					}
-					break;
-				case '%':
-					_putcha('%');
-					ncount++;
-					break;
-				default:
-					{
-					if (*format != '%')
-					{
-						_putcha(*format);
-						ncount++;
-					}
-					break;
-					}
+				_putchar('%');
+				ncount++;
+				format++;
 			}
-		}
-		format++;
-	}
+			else if (*format == 'c')
+			{
+				_putchar(va_arg(args, int));
+				ncount++;
+				format++;
+			}
+			else if (*format == 's')
+			{
+				char *str = va_arg(args, char*);
 
+				if (str)
+					while (*str)
+						_putchar(*str++);
+						ncount++;
+
+					format++;
+			}
+			else
+				_putchar('%');
+				ncount++;
+		}
+	}
 	va_end(args);
 	return (ncount);
 }
