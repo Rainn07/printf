@@ -8,9 +8,12 @@ int _printf(const char *format, ...)
 {
 	int ncount = 0;
 	va_list args;
+	int spec_found = 0;
+
 	format_specifier specifiers[] = {
 		{'c', c_format},
 		{'s', s_format},
+	};
 
 	va_start(args, format);
 
@@ -31,13 +34,14 @@ int _printf(const char *format, ...)
 				{
 					specifiers[i].f(args);
 					ncount++;
+					spec_found = 1;
 					break;
 				}
 			}
-			else
+			if (!spec_found)
 				_putchar('%');
-				ncount++;
 		}
+		format++;
 	}
 	va_end(args);
 	return (ncount);
