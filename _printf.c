@@ -8,6 +8,7 @@ int _printf(const char *format, ...)
 {
 	int ncount = 0;
 	va_list args;
+	int i;
 	int spec_found = 0;
 
 	format_specifier specifiers[] = {
@@ -28,7 +29,7 @@ int _printf(const char *format, ...)
 		{
 			format++;
 
-			for (int i = 0; specifiers[i].type != '\0'; i++)
+			for (i = 0; specifiers[i].type != '\0'; i++)
 			{
 				if (*format == specifiers[i].type)
 				{

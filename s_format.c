@@ -10,8 +10,8 @@
 
 void s_format(va_list args)
 {
-	int i, j;
-	char *str = va_args(args, char *);
+	int i;
+	char *str = va_arg(args, char *);
 
 	if (str != NULL)
 	{
