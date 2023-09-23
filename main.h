@@ -17,12 +17,6 @@ typedef struct
 
 void c_format(va_list args);
 void s_format(va_list args);
-
-format_specifier specifiers[] = {
-	{'c', c_format},
-	{'s', s_format},
-};
-
 int _printf(const char *format, ...);
 int _putchar(char c);
 

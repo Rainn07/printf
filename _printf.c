@@ -10,11 +10,12 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i;
 	int spec_found = 0;
-
-	format_specifier specifiers[] = {
+	format_specifier specifiers[] = 
+	{
 		{'c', c_format},
 		{'s', s_format},
 	};
+
 
 	va_start(args, format);
 
@@ -40,7 +41,11 @@ int _printf(const char *format, ...)
 				}
 			}
 			if (!spec_found)
+			{
 				_putchar('%');
+				ncount++;
+			}
+			spec_found = 0;
 		}
 		format++;
 	}
