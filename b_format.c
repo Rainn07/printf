@@ -11,11 +11,12 @@ void b_format(va_list args)
 {
 	unsigned int value = va_arg(args, unsigned int);
 	int binary[32];
+	int i, index;
 
-	for (int i = 0; i < 32; i++)
+	for (i = 0; i < 32; i++)
 		binary[i] = 0;
 
-	int index = 31;
+	index = 31;
 
 	while (value > 0)
 	{
@@ -24,7 +25,7 @@ void b_format(va_list args)
 		index--;
 	}
 
-	for (int i = index + 1; i < 32; i++)
+	for (i = index + 1; i < 32; i++)
 		_putchar('0' + binary[i]);
 
 }
