@@ -5,11 +5,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 /**
-  * format_specifier - corresponds to input format specifier
+  * struct format_specifier - corresponds to input format specifier
   * @type: format type
   * @f: function
   */
-typedef struct
+typedef struct format_specifier
 {
 	char type;
 	void (*f)(va_list args);

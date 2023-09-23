@@ -8,15 +8,11 @@ int _printf(const char *format, ...)
 {
 	int ncount = 0;
 	va_list args;
-	int i;
-	int spec_found = 0;
-	format_specifier specifiers[] = 
-	{
+	int i, spec_found = 0;
+	format_specifier specifiers[] = {
 		{'c', c_format},
 		{'s', s_format},
 	};
-
-
 	va_start(args, format);
 
 	while (*format)
@@ -29,7 +25,6 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-
 			for (i = 0; specifiers[i].type != '\0'; i++)
 			{
 				if (*format == specifiers[i].type)
