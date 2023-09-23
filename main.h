@@ -16,6 +16,7 @@ typedef struct format_specifier
 } format_specifier;
 
 void c_format(va_list args);
+void d_i_format(va_list args);
 void s_format(va_list args);
 int _printf(const char *format, ...);
 int _putchar(char c);

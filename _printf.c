@@ -12,6 +12,8 @@ int _printf(const char *format, ...)
 	format_specifier specifiers[] = {
 		{'c', c_format},
 		{'s', s_format},
+		{'d', d_i_format},
+		{'i', d_i_format},
 	};
 	va_start(args, format);
 
