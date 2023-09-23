@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 		{'s', s_format},
 		{'d', d_i_format},
 		{'i', d_i_format},
+		{'b', B_format},
 	};
 	va_start(args, format);
 
